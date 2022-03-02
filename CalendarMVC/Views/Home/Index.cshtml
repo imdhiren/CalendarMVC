@@ -1,0 +1,30 @@
+﻿@using CalendarMVC.Models
+
+@model WeekOfMonth
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+<div class="row">
+    <div class=" col-md-6 col-sm-12 pull-right-lg calandar-bg">
+        <div class="col-md-12" style="padding:0px;">
+            <br>
+            <div class="divCalendar">
+                @Html.Partial("_CalendarPartial", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.RenderFormat("<script src='{0}' defer></script>", "~/bundles/calendarIndexJs")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var app = new Calendar();
+            app.PrevNextButton();
+            app.Mouseover();
+            app.Mouseleave();
+        });
+    </script>
+}
